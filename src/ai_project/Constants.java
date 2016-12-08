@@ -5,6 +5,10 @@ package ai_project;
  */
 public class Constants {
     /**
+     * Step limitation for GA
+     */
+    public static final int GA_STEP_LIMITATION = 1000;
+    /**
      * for first choice hillclimbing , for searching a random neighbor
      */
     public static int RANDOM_RATE = 1000 ;
