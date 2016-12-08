@@ -1,7 +1,7 @@
-package algorithms.hillclimbing;
+package ai_project.algorithms.hillclimbing;
 
-import data_structures.Node;
-import problems.Problem;
+import ai_project.data_structures.Node;
+import ai_project.problems.Problem;
 
 import java.util.ArrayList;
 

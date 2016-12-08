@@ -1,4 +1,4 @@
-package data_structures;
+package ai_project.data_structures;
 
 /**
  * Created by mma on 10/26/16.

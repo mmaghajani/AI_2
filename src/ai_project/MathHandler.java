@@ -1,4 +1,4 @@
-package algorithms;
+package ai_project;
 
 import java.util.Random;
 

@@ -1,10 +1,12 @@
-import algorithms.informed_search.AStar;
-import algorithms.uninformed_search.BFS;
-import algorithms.uninformed_search.BidirectionalSearch;
-import algorithms.uninformed_search.UniformCostSearch;
-import algorithms.uninformed_search.dfs.DepthLimitedSearch;
-import algorithms.uninformed_search.dfs.UnlimitedDFS;
-import problems.Queens;
+package ai_project;
+
+import ai_project.algorithms.informed_search.AStar;
+import ai_project.algorithms.uninformed_search.BFS;
+import ai_project.algorithms.uninformed_search.BidirectionalSearch;
+import ai_project.algorithms.uninformed_search.UniformCostSearch;
+import ai_project.algorithms.uninformed_search.dfs.DepthLimitedSearch;
+import ai_project.algorithms.uninformed_search.dfs.UnlimitedDFS;
+import ai_project.problems.Queens;
 
 import java.util.ArrayList;
 

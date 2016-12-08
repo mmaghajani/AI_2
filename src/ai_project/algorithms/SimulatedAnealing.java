@@ -1,11 +1,10 @@
-package algorithms;
+package ai_project.algorithms;
 
-import algorithms.Algorithm;
-import data_structures.Node;
-import problems.Problem;
+import ai_project.MathHandler;
+import ai_project.data_structures.Node;
+import ai_project.problems.Problem;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Created by mma on 12/5/16.

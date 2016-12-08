@@ -1,11 +1,10 @@
-package algorithms.hillclimbing;
+package ai_project.algorithms.hillclimbing;
 
-import algorithms.MathHandler;
-import data_structures.Node;
-import problems.Problem;
+import ai_project.MathHandler;
+import ai_project.data_structures.Node;
+import ai_project.problems.Problem;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Created by mma on 12/8/16.

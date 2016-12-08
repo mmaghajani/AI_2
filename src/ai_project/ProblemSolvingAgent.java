@@ -1,6 +1,8 @@
-import algorithms.Algorithm;
-import data_structures.Node;
-import problems.Problem;
+package ai_project;
+
+import ai_project.algorithms.Algorithm;
+import ai_project.data_structures.Node;
+import ai_project.problems.Problem;
 
 /**
  * Created by mma on 10/26/16.

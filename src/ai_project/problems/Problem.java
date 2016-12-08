@@ -1,6 +1,6 @@
-package problems;
+package ai_project.problems;
 
-import data_structures.Node;
+import ai_project.data_structures.Node;
 
 import java.util.ArrayList;
 

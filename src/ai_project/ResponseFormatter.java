@@ -1,5 +1,7 @@
-import algorithms.Algorithm;
-import data_structures.Node;
+package ai_project;
+
+import ai_project.algorithms.Algorithm;
+import ai_project.data_structures.Node;
 
 import java.util.ArrayList;
 

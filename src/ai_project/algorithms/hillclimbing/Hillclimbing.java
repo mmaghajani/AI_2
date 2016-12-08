@@ -1,6 +1,6 @@
-package algorithms.hillclimbing;
+package ai_project.algorithms.hillclimbing;
 
-import algorithms.Algorithm;
+import ai_project.algorithms.Algorithm;
 
 /**
  * Created by mma on 12/8/16.
