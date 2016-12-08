@@ -20,7 +20,7 @@ public class SimulatedAnealing extends Algorithm {
         Node currentNode = initial ;
         while (steps < stepLimit) {
             ArrayList<Node> nextStates = problem.nextState(currentNode);
-            Node next = nextStates.get(getRandNum(nextStates.size()));
+            Node next = nextStates.get(getIntegerRandNum(nextStates.size()));
             if( problem.objectiveFunction(currentNode) < problem.objectiveFunction(next)){
                 currentNode = next ;
             }else if(getRandNum() > p(steps)) {
@@ -35,7 +35,7 @@ public class SimulatedAnealing extends Algorithm {
         return 1 / t;
     }
 
-    private int getRandNum(int limit){
+    private int getIntegerRandNum(int limit){
         Random x = new Random();
         return (x.nextInt()%limit);
     }

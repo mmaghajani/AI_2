@@ -82,7 +82,12 @@ public class Queens extends Problem {
     }
 
     @Override
-    public double heuristicFunction(Node node) {
+    public Node getGoalState() {
+        return null;
+    }
+
+    @Override
+    public int objectiveFunction(Node node) {
         int counter = 0 ;
         int[] state = ((int[]) node.getState());
         int[] mark = new int[8];
@@ -96,16 +101,6 @@ public class Queens extends Problem {
             if( mark[i] == 0 )
                 counter++ ;
         }
-        return counter;
-    }
-
-    @Override
-    public Node getGoalState() {
-        return null;
-    }
-
-    @Override
-    public int objectiveFunction(Node node) {
-        return 0;
+        return 8 - counter;
     }
 }
