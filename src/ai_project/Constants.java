@@ -8,4 +8,8 @@ public class Constants {
      * for first choice hillclimbing , for searching a random neighbor
      */
     public static int RANDOM_RATE = 1000 ;
+    /**
+     * step limitation for Simulated Anealing
+     */
+    public static int STEP_LIMIT = 1000;
 }

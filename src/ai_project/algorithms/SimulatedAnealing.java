@@ -1,5 +1,6 @@
 package ai_project.algorithms;
 
+import ai_project.Constants;
 import ai_project.MathHandler;
 import ai_project.data_structures.Node;
 import ai_project.problems.Problem;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  */
 public class SimulatedAnealing extends Algorithm {
 
-    int stepLimit = 1000;
+    int stepLimit = Constants.STEP_LIMIT;
 
     @Override
     public Node apply(Problem problem) {
