@@ -1,7 +1,49 @@
 package algorithms.hillclimbing;
 
+import algorithms.MathHandler;
+import data_structures.Node;
+import problems.Problem;
+
+import java.util.ArrayList;
+import java.util.Random;
+
 /**
  * Created by mma on 12/8/16.
  */
-public class RandomHillclimbing {
+public class RandomHillclimbing extends Hillclimbing {
+    @Override
+    public Node apply(Problem problem) {
+        MathHandler math = MathHandler.getInstance();
+        //get initial state
+        Node currentNode = problem.getInitialState();
+        while (true) {
+            ArrayList<Node> nextStates = problem.nextState(currentNode);
+            nextStates = deriveIncrementedNextStates(nextStates, currentNode, problem);
+            if (nextStates.size() == 0) {
+                //local maximum
+                return currentNode;
+            } else {
+                Node next = nextStates.get(math.getIntegerRandNum(nextStates.size()));
+                currentNode = next ;
+            }
+        }
+    }
+
+    /**
+     * this method filters next states makes objective function incremented
+     * @param nextStates
+     * @param currentNode
+     * @param problem problem class for compute values of objective function
+     * @return incremented next states
+     */
+    private ArrayList<Node> deriveIncrementedNextStates(ArrayList<Node> nextStates, Node currentNode
+            , Problem problem) {
+        ArrayList<Node> result = new ArrayList<>();
+        for (Node state : nextStates) {
+            if (problem.objectiveFunction(currentNode) < problem.objectiveFunction(state)) {
+                result.add(state);
+            }
+        }
+        return result;
+    }
 }
