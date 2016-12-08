@@ -22,7 +22,7 @@ public class SimpleHillclimbing extends Hillclimbing {
                     flag = true;
                 }
             }
-            //end of algorithm
+            //local maximum
             if( flag == false )
                 return currentNode ;
         }
