@@ -1,5 +1,6 @@
 package ai_project.algorithms.hillclimbing;
 
+import ai_project.Constants;
 import ai_project.MathHandler;
 import ai_project.data_structures.Node;
 import ai_project.problems.Problem;
@@ -17,7 +18,7 @@ public class FirstChoiceHillclimbing extends Hillclimbing {
         Node currentNode = problem.getInitialState();
         while (true) {
             ArrayList<Node> nextStates = problem.nextState(currentNode);
-            int index = 1000 ;
+            int index = Constants.RANDOM_RATE;
             boolean flag = false;
             while(index > 0 ){
                 Node next = nextStates.get(math.getIntegerRandNum(nextStates.size())) ;
