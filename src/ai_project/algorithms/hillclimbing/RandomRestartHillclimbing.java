@@ -13,10 +13,10 @@ import java.util.ArrayList;
 public class RandomRestartHillclimbing extends Hillclimbing {
     @Override
     public Node apply(Problem problem) {
-        {
-            int restartLimit = Constants.RESTART_LIMIT;
-            Node currentNode = problem.getInitialState();
-            boolean flag ;
+        int restartLimit = Constants.RESTART_LIMIT;
+        Node currentNode = problem.getInitialState();
+        boolean flag;
+        while (restartLimit > 0) {
             while (true) {
                 ArrayList<Node> nextStates = problem.nextState(currentNode);
                 flag = false;
@@ -28,11 +28,14 @@ public class RandomRestartHillclimbing extends Hillclimbing {
                 }
                 //local maximum
                 if (flag == false) {
-                    restartLimit--;
                     if (restartLimit == 0)
                         return currentNode;
+                    break;
                 }
             }
+            restartLimit--;
         }
+
+        return currentNode ;
     }
 }
