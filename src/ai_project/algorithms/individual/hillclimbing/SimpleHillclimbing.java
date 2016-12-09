@@ -13,7 +13,7 @@ public class SimpleHillclimbing extends Hillclimbing {
     public Node apply(Problem problem) {
         Node currentNode = problem.getInitialState();
         boolean flag = false;
-        while (true) {
+        while (!problem.isGoal(currentNode)) {
             ArrayList<Node> nextStates = problem.nextState(currentNode);
             flag = false;
             for (Node nextState : nextStates) {
@@ -26,8 +26,10 @@ public class SimpleHillclimbing extends Hillclimbing {
                 }
             }
             //local maximum
-            if( flag == false )
-                return currentNode ;
+            if (flag == false)
+                return currentNode;
         }
+
+        return currentNode;
     }
 }

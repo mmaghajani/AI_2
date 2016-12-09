@@ -16,7 +16,7 @@ public class RandomRestartHillclimbing extends Hillclimbing {
         Node currentNode = problem.getInitialState();
         boolean flag;
         while (restartLimit > 0) {
-            while (true) {
+            while (!problem.isGoal(currentNode)) {
                 ArrayList<Node> nextStates = problem.nextState(currentNode);
                 flag = false;
                 for (Node nextState : nextStates) {
@@ -35,9 +35,12 @@ public class RandomRestartHillclimbing extends Hillclimbing {
                     break;
                 }
             }
-            restartLimit--;
+            if (problem.isGoal(currentNode))
+                return currentNode;
+            else
+                restartLimit--;
         }
 
-        return currentNode ;
+        return currentNode;
     }
 }

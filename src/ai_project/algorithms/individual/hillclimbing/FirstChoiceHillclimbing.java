@@ -16,14 +16,14 @@ public class FirstChoiceHillclimbing extends Hillclimbing {
         MathHandler math = MathHandler.getInstance();
         //get initial state
         Node currentNode = problem.getInitialState();
-        while (true) {
+        while (!problem.isGoal(currentNode)) {
             ArrayList<Node> nextStates = problem.nextState(currentNode);
             int index = Constants.RANDOM_RATE;
             boolean flag = false;
-            while(index > 0 ){
-                Node next = nextStates.get(math.getIntegerRandNum(nextStates.size())) ;
+            while (index > 0) {
+                Node next = nextStates.get(math.getIntegerRandNum(nextStates.size()));
                 increaseNumOfVisitedNode();
-                if( problem.objectiveFunction(currentNode) < problem.objectiveFunction(next)){
+                if (problem.objectiveFunction(currentNode) < problem.objectiveFunction(next)) {
                     increaseNumOfExpandedNode();
                     next.setParent(currentNode);
                     currentNode = next;
@@ -33,8 +33,10 @@ public class FirstChoiceHillclimbing extends Hillclimbing {
                 index--;
             }
             //local maximum
-            if( flag == false )
-                return currentNode ;
+            if (flag == false)
+                return currentNode;
         }
+
+        return currentNode;
     }
 }

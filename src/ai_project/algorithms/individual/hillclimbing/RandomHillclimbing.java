@@ -15,7 +15,7 @@ public class RandomHillclimbing extends Hillclimbing {
         MathHandler math = MathHandler.getInstance();
         //get initial state
         Node currentNode = problem.getInitialState();
-        while (true) {
+        while (!problem.isGoal(currentNode)) {
             ArrayList<Node> nextStates = problem.nextState(currentNode);
             nextStates = deriveIncrementedNextStates(nextStates, currentNode, problem);
             setNumOfVisitedNode(getNumOfVisitedNode() + nextStates.size());
@@ -26,16 +26,19 @@ public class RandomHillclimbing extends Hillclimbing {
                 Node next = nextStates.get(math.getIntegerRandNum(nextStates.size()));
                 increaseNumOfExpandedNode();
                 next.setParent(currentNode);
-                currentNode = next ;
+                currentNode = next;
             }
         }
+
+        return currentNode;
     }
 
     /**
      * this method filters next states makes objective function incremented
+     *
      * @param nextStates
      * @param currentNode
-     * @param problem problem class for compute values of objective function
+     * @param problem     problem class for compute values of objective function
      * @return incremented next states
      */
     private ArrayList<Node> deriveIncrementedNextStates(ArrayList<Node> nextStates, Node currentNode
