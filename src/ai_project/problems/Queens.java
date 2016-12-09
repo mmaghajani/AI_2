@@ -129,7 +129,7 @@ public class Queens extends Problem {
     }
 
     @Override
-    public int objectiveFunction(Node node) {
+    public double objectiveFunction(Node node) {
         int counter = 0 ;
         int[] state = ((int[]) node.getState());
         int[] mark = new int[8];

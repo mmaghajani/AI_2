@@ -1,5 +1,8 @@
 package ai_project.problems;
 
+import ai_project.Constants;
+import ai_project.MathHandler;
+import ai_project.data_structures.EquationSolvingNode;
 import ai_project.data_structures.Node;
 
 import java.util.ArrayList;
@@ -10,22 +13,35 @@ import java.util.ArrayList;
 public class EquationSolving extends Problem {
     @Override
     public Node getInitialState() {
-        return null;
+        return new EquationSolvingNode(0.2);
     }
 
     @Override
     public Node getRandomInitialState() {
-        return null;
+        MathHandler math = MathHandler.getInstance();
+        //generate random number between 0.2 to 3.14
+        int state = (math.getIntegerRandNum(294) + 20) / 100;
+        return new EquationSolvingNode(state);
     }
 
     @Override
     public ArrayList<Node> nextState(Node node) {
-        return null;
+        ArrayList<Node> nextState = new ArrayList<>();
+        double state = ((double) node.getState());
+        double nextState1 = state + 0.01;
+        double nextState2 = state - 0.01;
+        nextState.add(new EquationSolvingNode(nextState1));
+        nextState.add(new EquationSolvingNode(nextState2));
+        return nextState;
     }
 
     @Override
     public boolean isGoal(Node node) {
-        return false;
+        double state = (double) node.getState();
+        if (Math.abs(Math.sin(state) - state * state + state) < Constants.PRECISION_SOLVING_EQUATION)
+            return true;
+        else
+            return false;
     }
 
     @Override
@@ -34,8 +50,10 @@ public class EquationSolving extends Problem {
     }
 
     @Override
-    public ArrayList<Node> crossover(Node parent1, Node parent2) {
-        return null;
+    public Node crossover(Node parent1, Node parent2) {
+        EquationSolvingNode offspring = new EquationSolvingNode((
+                (double) parent1.getState() + (double) parent2.getState()) / 2);
+        return offspring;
     }
 
     @Override
@@ -49,7 +67,9 @@ public class EquationSolving extends Problem {
     }
 
     @Override
-    public int objectiveFunction(Node node) {
-        return 0;
+    public double objectiveFunction(Node node) {
+        double state = (double) node.getState();
+        double res = Math.abs(Math.sin(state) - state * state + state);
+        return -1 * res;
     }
 }

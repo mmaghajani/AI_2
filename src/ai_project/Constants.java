@@ -28,4 +28,8 @@ public class Constants {
      * Restart limitation for Random Restart Hillclimbing
      */
     public static int RESTART_LIMIT = 10;
+    /**
+     * Precision for equation
+     */
+    public static double PRECISION_SOLVING_EQUATION = 0.01 ;
 }

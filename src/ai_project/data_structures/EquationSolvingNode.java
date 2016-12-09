@@ -6,7 +6,7 @@ package ai_project.data_structures;
 public class EquationSolvingNode extends Node {
     private double state = 0.2;
 
-    public EquationSolvingNode(int state) {
+    public EquationSolvingNode(double state) {
         this.state = state;
     }
 

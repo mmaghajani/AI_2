@@ -24,7 +24,7 @@ public abstract class Problem {
 
     public abstract Node getGoalState();
 
-    public abstract int objectiveFunction(Node node);
+    public abstract double objectiveFunction(Node node);
 
     public double getPathCost(Node node){
         if(node == null )   return Double.MAX_VALUE ;
