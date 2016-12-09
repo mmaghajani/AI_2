@@ -21,7 +21,10 @@ public class RandomRestartHillclimbing extends Hillclimbing {
                 ArrayList<Node> nextStates = problem.nextState(currentNode);
                 flag = false;
                 for (Node nextState : nextStates) {
+                    increaseNumOfVisitedNode();
                     if (problem.objectiveFunction(currentNode) < problem.objectiveFunction(nextState)) {
+                        increaseNumOfExpandedNode();
+                        nextState.setParent(currentNode);
                         currentNode = nextState;
                         flag = true;
                     }

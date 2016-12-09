@@ -18,11 +18,14 @@ public class RandomHillclimbing extends Hillclimbing {
         while (true) {
             ArrayList<Node> nextStates = problem.nextState(currentNode);
             nextStates = deriveIncrementedNextStates(nextStates, currentNode, problem);
+            setNumOfVisitedNode(getNumOfVisitedNode() + nextStates.size());
             if (nextStates.size() == 0) {
                 //local maximum
                 return currentNode;
             } else {
                 Node next = nextStates.get(math.getIntegerRandNum(nextStates.size()));
+                increaseNumOfExpandedNode();
+                next.setParent(currentNode);
                 currentNode = next ;
             }
         }

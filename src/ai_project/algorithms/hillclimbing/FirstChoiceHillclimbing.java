@@ -22,7 +22,10 @@ public class FirstChoiceHillclimbing extends Hillclimbing {
             boolean flag = false;
             while(index > 0 ){
                 Node next = nextStates.get(math.getIntegerRandNum(nextStates.size())) ;
+                increaseNumOfVisitedNode();
                 if( problem.objectiveFunction(currentNode) < problem.objectiveFunction(next)){
+                    increaseNumOfExpandedNode();
+                    next.setParent(currentNode);
                     currentNode = next;
                     flag = true;
                     break;
