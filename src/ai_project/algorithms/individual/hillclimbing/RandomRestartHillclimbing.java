@@ -1,9 +1,8 @@
-package ai_project.algorithms.hillclimbing;
+package ai_project.algorithms.individual.hillclimbing;
 
 import ai_project.Constants;
 import ai_project.data_structures.Node;
 import ai_project.problems.Problem;
-import com.sun.corba.se.impl.orbutil.closure.Constant;
 
 import java.util.ArrayList;
 

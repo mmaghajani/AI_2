@@ -1,4 +1,4 @@
-package ai_project.algorithms;
+package ai_project.algorithms.individual;
 
 import ai_project.Constants;
 import ai_project.MathHandler;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by mma on 12/5/16.
  */
-public class SimulatedAnealing extends Algorithm {
+public class SimulatedAnealing extends IndividualAlgorithm {
 
     int stepLimit = Constants.STEP_LIMIT;
 

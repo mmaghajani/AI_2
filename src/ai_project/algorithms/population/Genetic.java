@@ -1,4 +1,4 @@
-package ai_project.algorithms;
+package ai_project.algorithms.population;
 
 import ai_project.Constants;
 import ai_project.MathHandler;
@@ -6,12 +6,11 @@ import ai_project.data_structures.Node;
 import ai_project.problems.Problem;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 /**
  * Created by mma on 12/8/16.
  */
-public class Genetic extends Algorithm {
+public class Genetic extends PopulationAlgorithm {
     ArrayList<Node> population = new ArrayList<>();
     private int N = Constants.NUMBER_OF_POPULATION;
     private int K = Constants.PARENT_SELECTION_RATE;

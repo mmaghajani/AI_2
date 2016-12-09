@@ -1,4 +1,4 @@
-package ai_project.algorithms.hillclimbing;
+package ai_project.algorithms.individual.hillclimbing;
 
 import ai_project.Constants;
 import ai_project.MathHandler;
