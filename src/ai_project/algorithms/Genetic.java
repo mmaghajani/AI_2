@@ -22,7 +22,7 @@ public class Genetic extends Algorithm {
         int stepLimit = Constants.GA_STEP_LIMITATION;
         while (stepLimit > 0) {
             ArrayList<Node> parents = selectParentsWithTournamentSelection(problem);
-            ArrayList<Node> children = crossoverAndOffspring(parents);
+            ArrayList<Node> children = crossoverAndOffspring(parents , problem);
             children = mutation(children);
             population = remainingSelection(children);
             stepLimit--;
@@ -42,8 +42,14 @@ public class Genetic extends Algorithm {
         return null;
     }
 
-    private ArrayList<Node> crossoverAndOffspring(ArrayList<Node> parents) {
-        return null;
+    private ArrayList<Node> crossoverAndOffspring(ArrayList<Node> parents , Problem problem) {
+        ArrayList<Node> offspring = new ArrayList<>();
+        for( int i = 0 ; i < parents.size() ; i = i+2 ){
+            ArrayList<Node> childs = problem.crossover(parents.get(i) , parents.get(i+1));
+            offspring.add(childs.get(0));
+            offspring.add(childs.get(1));
+        }
+        return offspring;
     }
 
     private ArrayList<Node> selectParentsWithTournamentSelection(Problem problem) {

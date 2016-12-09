@@ -13,7 +13,7 @@ public class Constants {
      */
     public static final int NUMBER_OF_POPULATION = 50;
     /**
-     * Number of members in parent selection
+     * Number of members in parent selection . must be even and less than NUMBER_OF_POPULATION !
      */
     public static final int PARENT_SELECTION_RATE = 4;
     /**

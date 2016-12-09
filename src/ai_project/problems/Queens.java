@@ -94,6 +94,33 @@ public class Queens extends Problem {
     }
 
     @Override
+    public ArrayList<Node> crossover(Node parent1, Node parent2) {
+        MathHandler math = MathHandler.getInstance();
+        int breakPoint = math.getIntegerRandNum(8);
+        int[] state = new int[8];
+        //generate first child
+        for( int i = 0 ; i < 8 ; i++ ){
+            if( i < breakPoint )
+                state[i] = ((int[]) parent1.getState())[i] ;
+            else
+                state[i] = ((int[]) parent2.getState())[i] ;
+        }
+        QueensNode child1 = new QueensNode(state.clone());
+        //generate second child
+        for( int i = 0 ; i < 8 ; i++ ){
+            if( i < breakPoint )
+                state[i] = ((int[]) parent2.getState())[i] ;
+            else
+                state[i] = ((int[]) parent1.getState())[i] ;
+        }
+        QueensNode child2 = new QueensNode(state.clone());
+        ArrayList<Node> result = new ArrayList<>();
+        result.add(child1);
+        result.add(child2);
+        return result;
+    }
+
+    @Override
     public Node getGoalState() {
         return null;
     }
