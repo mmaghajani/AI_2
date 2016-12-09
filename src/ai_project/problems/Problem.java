@@ -10,6 +10,8 @@ import java.util.ArrayList;
 public abstract class Problem {
     public abstract Node getInitialState();
 
+    public abstract Node getRandomInitialState();
+
     public abstract ArrayList<Node> nextState(Node node);
 
     public abstract boolean isGoal(Node node);

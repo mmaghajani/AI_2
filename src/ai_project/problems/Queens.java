@@ -1,5 +1,6 @@
 package ai_project.problems;
 
+import ai_project.MathHandler;
 import ai_project.data_structures.Node;
 import ai_project.data_structures.QueensNode;
 
@@ -22,6 +23,17 @@ public class Queens extends Problem {
         state[5] = 1 ;
         state[6] = 5 ;
         state[7] = 0 ;
+        QueensNode node = new QueensNode(state);
+        return node;
+    }
+
+    @Override
+    public Node getRandomInitialState() {
+        MathHandler math = MathHandler.getInstance();
+        int[] state = new int[8];
+        for( int i = 0 ; i < 8 ; i++ )
+            state[i] = math.getIntegerRandNum(8);
+
         QueensNode node = new QueensNode(state);
         return node;
     }

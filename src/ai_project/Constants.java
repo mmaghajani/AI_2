@@ -9,6 +9,14 @@ public class Constants {
      */
     public static final int GA_STEP_LIMITATION = 1000;
     /**
+     * Number of population in GA
+     */
+    public static final int NUMBER_OF_POPULATION = 50;
+    /**
+     * Number of members in parent selection
+     */
+    public static final int PARENT_SELECTION_RATE = 4;
+    /**
      * for first choice hillclimbing , for searching a random neighbor
      */
     public static int RANDOM_RATE = 1000 ;
