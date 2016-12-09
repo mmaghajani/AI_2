@@ -121,6 +121,20 @@ public class Queens extends Problem {
     }
 
     @Override
+    public ArrayList<Node> mutation(ArrayList<Node> children) {
+        ArrayList<Node> result = new ArrayList<>();
+        MathHandler math = MathHandler.getInstance();
+        for( Node node : children){
+            int x = math.getIntegerRandNum(8);
+            int[] state = ((int[])node.getState()) ;
+            state[x] = math.getIntegerRandNum(8) ;
+            ((QueensNode)node).setState(state);
+            result.add(node);
+        }
+        return result;
+    }
+
+    @Override
     public Node getGoalState() {
         return null;
     }

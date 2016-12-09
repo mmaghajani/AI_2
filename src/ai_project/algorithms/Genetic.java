@@ -23,7 +23,7 @@ public class Genetic extends Algorithm {
         while (stepLimit > 0) {
             ArrayList<Node> parents = selectParentsWithTournamentSelection(problem);
             ArrayList<Node> children = crossoverAndOffspring(parents , problem);
-            children = mutation(children);
+            children = mutation(children , problem);
             population = remainingSelection(children);
             stepLimit--;
         }
@@ -38,8 +38,8 @@ public class Genetic extends Algorithm {
         return null;
     }
 
-    private ArrayList<Node> mutation(ArrayList<Node> children) {
-        return null;
+    private ArrayList<Node> mutation(ArrayList<Node> children , Problem problem) {
+        return problem.mutation(children);
     }
 
     private ArrayList<Node> crossoverAndOffspring(ArrayList<Node> parents , Problem problem) {

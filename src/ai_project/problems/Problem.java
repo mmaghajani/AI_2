@@ -20,6 +20,8 @@ public abstract class Problem {
 
     public abstract ArrayList<Node> crossover(Node parent1 , Node parent2);
 
+    public abstract ArrayList<Node> mutation(ArrayList<Node> children);
+
     public abstract Node getGoalState();
 
     public abstract int objectiveFunction(Node node);
