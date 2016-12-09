@@ -20,7 +20,7 @@ public class SimulatedAnealing extends IndividualAlgorithm {
         int steps = 0;
         Node initial = problem.getInitialState();
         Node currentNode = initial ;
-        while (steps < stepLimit) {
+        while (steps < stepLimit && !problem.isGoal(currentNode)) {
             ArrayList<Node> nextStates = problem.nextState(currentNode);
             Node next = nextStates.get(math.getIntegerRandNum(nextStates.size()));
             increaseNumOfVisitedNode();
