@@ -1,9 +1,9 @@
 package ai_project.data_structures;
 
 /**
- * Created by mma on 10/26/16.
+ * Created by mma on 12/9/16.
  */
-public class CrawlerNode extends Node {
+public class EquationSolvingNode extends Node {
     @Override
     public Object getState() {
         return null;
