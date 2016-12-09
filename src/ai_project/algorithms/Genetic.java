@@ -45,9 +45,10 @@ public class Genetic extends Algorithm {
     private ArrayList<Node> crossoverAndOffspring(ArrayList<Node> parents , Problem problem) {
         ArrayList<Node> offspring = new ArrayList<>();
         for( int i = 0 ; i < parents.size() ; i = i+2 ){
-            ArrayList<Node> childs = problem.crossover(parents.get(i) , parents.get(i+1));
-            offspring.add(childs.get(0));
-            offspring.add(childs.get(1));
+            //problem object generates 2 children from 2 parents
+            ArrayList<Node> children = problem.crossover(parents.get(i) , parents.get(i+1));
+            offspring.add(children.get(0));
+            offspring.add(children.get(1));
         }
         return offspring;
     }
