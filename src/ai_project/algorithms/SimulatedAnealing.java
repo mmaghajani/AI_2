@@ -23,10 +23,15 @@ public class SimulatedAnealing extends Algorithm {
         while (steps < stepLimit) {
             ArrayList<Node> nextStates = problem.nextState(currentNode);
             Node next = nextStates.get(math.getIntegerRandNum(nextStates.size()));
+            increaseNumOfVisitedNode();
             if( problem.objectiveFunction(currentNode) < problem.objectiveFunction(next)){
+                next.setParent(currentNode);
                 currentNode = next ;
+                increaseNumOfExpandedNode();
             }else if(math.getRandNum() > p(steps)) {
+                next.setParent(currentNode);
                 currentNode = next ;
+                increaseNumOfExpandedNode();
             }
             steps++;
         }
