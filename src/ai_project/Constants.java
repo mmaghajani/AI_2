@@ -5,7 +5,7 @@ package ai_project;
  */
 public class Constants {
     /**
-     * Step limitation for GA
+     * Step limitation for GA.The number of total fitness evaluation
      */
     public static final int GA_STEP_LIMITATION = 1000;
     /**
