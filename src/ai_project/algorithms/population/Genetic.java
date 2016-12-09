@@ -24,7 +24,7 @@ public class Genetic extends PopulationAlgorithm {
     public Node apply(Problem problem) {
         population = generateInitialPopulation(problem);
         int stepLimit = Constants.GA_STEP_LIMITATION;
-        while (stepLimit > 0) {
+        while (stepLimit > 0 && !isGoal(population , problem)) {
             details.put(Constants.GA_STEP_LIMITATION - stepLimit, computeDetails(problem));
             ArrayList<Node> parents = selectParentsWithTournamentSelection(problem);
             ArrayList<Node> children = crossoverAndOffspring(parents, problem);
@@ -33,6 +33,14 @@ public class Genetic extends PopulationAlgorithm {
             stepLimit--;
         }
         return bestNode(population, problem);
+    }
+
+    private boolean isGoal(ArrayList<Node> population , Problem problem) {
+        for( int i = 0 ; i < population.size() ; i++ ){
+            if( problem.isGoal(population.get(i)))
+                return true;
+        }
+        return false ;
     }
 
     private ArrayList<Double> computeDetails(Problem problem) {
