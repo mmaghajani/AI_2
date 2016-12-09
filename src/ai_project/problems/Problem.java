@@ -18,7 +18,7 @@ public abstract class Problem {
 
     public abstract int getCost(Node src, Node dest);
 
-    public abstract ArrayList<Node> crossover(Node parent1 , Node parent2);
+    public abstract Node crossover(Node parent1 , Node parent2);
 
     public abstract ArrayList<Node> mutation(ArrayList<Node> children);
 

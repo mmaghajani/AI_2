@@ -42,11 +42,11 @@ public class Genetic extends Algorithm {
 
     private ArrayList<Node> remainingSelection(ArrayList<Node> children , Problem problem) {
         MathHandler math = MathHandler.getInstance();
-        //Adds K node to population
+        //Adds K/2 node to population
         for( int i = 0 ; i < children.size() ; i++ ){
             population.add(children.get(i));
         }
-        //Deletes K node from population based on fitness
+        //Deletes K/2 node from population based on fitness
         population.sort((node, t1) -> {
             if (problem.objectiveFunction(node) > problem.objectiveFunction(t1))
                 return 1;
@@ -55,7 +55,7 @@ public class Genetic extends Algorithm {
             else
                 return -1;
         });
-        for (int i = 0; i < K; i++) {
+        for (int i = 0; i < K/2; i++) {
             int x  = math.getIntegerRandNum(population.size());
             population.remove(population.size() - x ) ;
         }
@@ -70,10 +70,9 @@ public class Genetic extends Algorithm {
     private ArrayList<Node> crossoverAndOffspring(ArrayList<Node> parents, Problem problem) {
         ArrayList<Node> offspring = new ArrayList<>();
         for (int i = 0; i < parents.size(); i = i + 2) {
-            //problem object generates 2 children from 2 parents
-            ArrayList<Node> children = problem.crossover(parents.get(i), parents.get(i + 1));
-            offspring.add(children.get(0));
-            offspring.add(children.get(1));
+            //problem object generates child from parents
+            Node child = problem.crossover(parents.get(i), parents.get(i + 1));
+            offspring.add(child);
         }
         return offspring;
     }
