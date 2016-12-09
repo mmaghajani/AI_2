@@ -5,6 +5,14 @@ package ai_project;
  */
 public class Constants {
     /**
+     * Average property for Gaussian function
+     */
+    public static final double AVERAGE = 0 ;
+    /**
+     * Variance property for Gaussian function
+     */
+    public static final double VARIANCE = 0.01;
+    /**
      * Step limitation for GA.The number of total fitness evaluation
      */
     public static final int GA_STEP_LIMITATION = 1000;

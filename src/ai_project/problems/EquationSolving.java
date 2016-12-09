@@ -58,8 +58,15 @@ public class EquationSolving extends Problem {
 
     @Override
     public ArrayList<Node> mutation(ArrayList<Node> children) {
-        return null;
+        MathHandler math = MathHandler.getInstance();
+        for (int i = 0; i < children.size(); i++) {
+            double x = (double) children.get(i).getState();
+            double gaussianValue = math.gaussianValue(x);
+            ((EquationSolvingNode) children.get(i)).setState(gaussianValue);
+        }
+        return children;
     }
+
 
     @Override
     public Node getGoalState() {

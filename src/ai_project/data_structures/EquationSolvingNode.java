@@ -10,7 +10,7 @@ public class EquationSolvingNode extends Node {
         this.state = state;
     }
 
-    public void setState(int state) {
+    public void setState(double state) {
         this.state = state;
     }
 
