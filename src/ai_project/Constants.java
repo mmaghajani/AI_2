@@ -31,17 +31,17 @@ public class Constants {
     /**
      * for first choice hillclimbing , for searching a random neighbor
      */
-    public static int RANDOM_RATE = 1000 ;
+    public static final int RANDOM_RATE = 1000 ;
     /**
      * step limitation for Simulated Anealing
      */
-    public static int STEP_LIMIT = 1000;
+    public static final int STEP_LIMIT = 1000;
     /**
      * Restart limitation for Random Restart Hillclimbing
      */
-    public static int RESTART_LIMIT = 10;
+    public static final int RESTART_LIMIT = 10;
     /**
      * Precision for equation
      */
-    public static double PRECISION_SOLVING_EQUATION = 0.01 ;
+    public static final double PRECISION_SOLVING_EQUATION = 0.01 ;
 }
