@@ -27,11 +27,10 @@ public class EquationSolving extends Problem {
     @Override
     public ArrayList<Node> nextState(Node node) {
         ArrayList<Node> nextState = new ArrayList<>();
+        MathHandler math = MathHandler.getInstance();
         double state = ((double) node.getState());
-        double nextState1 = state + 0.01;
-        double nextState2 = state - 0.01;
+        double nextState1 = state + Constants.NEXT_STEP_RATE * math.gradian(state);
         nextState.add(new EquationSolvingNode(nextState1));
-        nextState.add(new EquationSolvingNode(nextState2));
         return nextState;
     }
 

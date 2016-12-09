@@ -25,6 +25,10 @@ public class Constants {
      */
     public static final int PARENT_SELECTION_RATE = 4;
     /**
+     * step length for next state in continuous space
+     */
+    public static final double NEXT_STEP_RATE = 1;
+    /**
      * for first choice hillclimbing , for searching a random neighbor
      */
     public static int RANDOM_RATE = 1000 ;
