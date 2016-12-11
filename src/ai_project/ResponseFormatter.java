@@ -14,7 +14,7 @@ import java.util.HashMap;
  * Created by mma on 10/31/16.
  */
 public class ResponseFormatter {
-    private final String seperator = "----------------------";
+    private final String separator = "----------------------";
 
     private static ResponseFormatter ourInstance = new ResponseFormatter();
 
@@ -34,10 +34,10 @@ public class ResponseFormatter {
     public void formatIndividualAlgorithms(ProblemSolvingAgent agent, Node goal) {
         Algorithm algorithm = agent.getSearchAlgorithm();
 
-        System.out.println(seperator);
+        System.out.println(separator);
         System.out.println("number of expanded nodes : " + ((IndividualAlgorithm) algorithm).getNumOfExpandedNode());
         System.out.println("number of visited nodes : " + ((IndividualAlgorithm) algorithm).getNumOfVisitedNode());
-        System.out.println(seperator);
+        System.out.println(separator);
         System.out.println("fitness of goal : " + agent.getProblem().objectiveFunction(goal) + "\n\n\n");
         Node node = goal;
         ArrayList<Node> path = new ArrayList<>();
@@ -60,7 +60,7 @@ public class ResponseFormatter {
         Algorithm algorithm = agent.getSearchAlgorithm();
         HashMap<Integer , ArrayList<Double>> details = ((PopulationAlgorithm) algorithm).getDetails();
 
-        System.out.println(seperator);
+        System.out.println(separator);
         System.out.println("Number of total generation : " + details.size());
         for( int i = 0 ; i < details.size() ; i++ ){
             System.out.println("Generation " + i + " :");
