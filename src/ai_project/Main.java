@@ -5,6 +5,8 @@ import ai_project.algorithms.individual.hillclimbing.FirstChoiceHillclimbing;
 import ai_project.algorithms.individual.hillclimbing.RandomHillclimbing;
 import ai_project.algorithms.individual.hillclimbing.RandomRestartHillclimbing;
 import ai_project.algorithms.individual.hillclimbing.SimpleHillclimbing;
+import ai_project.algorithms.population.Genetic;
+import ai_project.problems.EquationSolving;
 import ai_project.problems.Queens;
 import com.sun.corba.se.impl.orbutil.closure.Constant;
 
@@ -19,6 +21,14 @@ public class Main {
         ProblemSolvingAgent agent = new ProblemSolvingAgent();
         getInputs();
         configQueensProblem(agent);
+        configEquationSolvingProblem(agent);
+    }
+
+    private static void configEquationSolvingProblem(ProblemSolvingAgent agent) {
+        EquationSolving problem = new EquationSolving();
+        agent.setProblem(problem);
+        agent.setSearchAlgorithm(new Genetic());
+        agent.solve();
     }
 
     private static void configQueensProblem(ProblemSolvingAgent agent) {
