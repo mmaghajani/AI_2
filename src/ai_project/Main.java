@@ -28,22 +28,23 @@ public class Main {
         EquationSolving problem = new EquationSolving();
         agent.setProblem(problem);
         agent.setSearchAlgorithm(new Genetic());
-        agent.solve();
+        ResponseFormatter.getInstance().formatPopulationAlgotithms(agent , agent.solve());
     }
 
     private static void configQueensProblem(ProblemSolvingAgent agent) {
         Queens problem = new Queens();
+        ResponseFormatter rf = ResponseFormatter.getInstance();
         agent.setProblem(problem);
         agent.setSearchAlgorithm(new SimulatedAnealing());
-        agent.solve();
+        rf.formatIndividualAlgorithms(agent , agent.solve());
         agent.setSearchAlgorithm(new SimpleHillclimbing());
-        agent.solve();
+        rf.formatIndividualAlgorithms(agent , agent.solve());
         agent.setSearchAlgorithm(new FirstChoiceHillclimbing());
-        agent.solve();
+        rf.formatIndividualAlgorithms(agent , agent.solve());
         agent.setSearchAlgorithm(new RandomHillclimbing());
-        agent.solve();
+        rf.formatIndividualAlgorithms(agent , agent.solve());
         agent.setSearchAlgorithm(new RandomRestartHillclimbing());
-        agent.solve();
+        rf.formatIndividualAlgorithms(agent , agent.solve());
     }
 
     private static void getInputs() {
