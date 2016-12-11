@@ -41,8 +41,8 @@ public class ProblemSolvingAgent {
         this.searchAlgorithm = searchAlgorithm;
     }
 
-    public Node solve(boolean isGraphy){
-        return searchAlgorithm.apply(problem , isGraphy);
+    public Node solve(){
+        return searchAlgorithm.apply(problem);
     }
 
 }

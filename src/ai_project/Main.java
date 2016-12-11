@@ -1,5 +1,10 @@
 package ai_project;
 
+import ai_project.algorithms.individual.SimulatedAnealing;
+import ai_project.algorithms.individual.hillclimbing.FirstChoiceHillclimbing;
+import ai_project.algorithms.individual.hillclimbing.RandomHillclimbing;
+import ai_project.algorithms.individual.hillclimbing.RandomRestartHillclimbing;
+import ai_project.algorithms.individual.hillclimbing.SimpleHillclimbing;
 import ai_project.problems.Queens;
 import com.sun.corba.se.impl.orbutil.closure.Constant;
 
@@ -11,7 +16,24 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
+        ProblemSolvingAgent agent = new ProblemSolvingAgent();
         getInputs();
+        configQueensProblem(agent);
+    }
+
+    private static void configQueensProblem(ProblemSolvingAgent agent) {
+        Queens problem = new Queens();
+        agent.setProblem(problem);
+        agent.setSearchAlgorithm(new SimulatedAnealing());
+        agent.solve();
+        agent.setSearchAlgorithm(new SimpleHillclimbing());
+        agent.solve();
+        agent.setSearchAlgorithm(new FirstChoiceHillclimbing());
+        agent.solve();
+        agent.setSearchAlgorithm(new RandomHillclimbing());
+        agent.solve();
+        agent.setSearchAlgorithm(new RandomRestartHillclimbing());
+        agent.solve();
     }
 
     private static void getInputs() {
