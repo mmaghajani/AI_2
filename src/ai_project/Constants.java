@@ -13,17 +13,20 @@ public class Constants {
      */
     public static final double VARIANCE = 0.01;
     /**
-     * Step limitation for GA.The number of total fitness evaluation
+     * Step limitation for GA.The number of total fitness evaluation.
+     * Can be overridden by user in input state
      */
-    public static final int GA_STEP_LIMITATION = 1000;
+    public static int GA_STEP_LIMITATION = 1000;
     /**
-     * Number of population in GA
+     * Number of population in GA.
+     * Can be overridden by user in input state
      */
-    public static final int NUMBER_OF_POPULATION = 50;
+    public static int NUMBER_OF_POPULATION = 50;
     /**
      * Number of members in parent selection . must be even and less than NUMBER_OF_POPULATION !
+     * Can be overridden by user in input state
      */
-    public static final int PARENT_SELECTION_RATE = 4;
+    public static int PARENT_SELECTION_RATE = 4;
     /**
      * step length for next state in continuous space
      */
