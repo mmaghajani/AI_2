@@ -16,7 +16,7 @@ public class Constants {
      * Step limitation for GA.The number of total fitness evaluation.
      * Can be overridden by user in input state
      */
-    public static int GA_STEP_LIMITATION = 800;
+    public static int GA_STEP_LIMITATION = 1000;
     /**
      * Number of population in GA.
      * Can be overridden by user in input state
