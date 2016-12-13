@@ -34,11 +34,7 @@ public class ResponseFormatter {
     public void formatIndividualAlgorithms(ProblemSolvingAgent agent, Node goal) {
         Algorithm algorithm = agent.getSearchAlgorithm();
 
-        System.out.println(separator);
-        System.out.println("number of expanded nodes : " + ((IndividualAlgorithm) algorithm).getNumOfExpandedNode());
-        System.out.println("number of visited nodes : " + ((IndividualAlgorithm) algorithm).getNumOfVisitedNode());
-        System.out.println(separator);
-        System.out.println("fitness of goal : " + agent.getProblem().objectiveFunction(goal) + "\n\n\n");
+
         Node node = goal;
         ArrayList<Node> path = new ArrayList<>();
         while (node != null) {
@@ -49,6 +45,11 @@ public class ResponseFormatter {
         System.out.println("Path : ");
         for (int i = path.size() - 1; i >= 0; i--)
             System.out.println(path.get(i));
+        System.out.println(separator);
+        System.out.println("number of expanded nodes : " + ((IndividualAlgorithm) algorithm).getNumOfExpandedNode());
+        System.out.println("number of visited nodes : " + ((IndividualAlgorithm) algorithm).getNumOfVisitedNode());
+        System.out.println(separator);
+        System.out.println("fitness of goal : " + agent.getProblem().objectiveFunction(goal) + "\n\n\n");
     }
 
     /**

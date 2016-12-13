@@ -44,7 +44,7 @@ public class SimulatedAnealing extends IndividualAlgorithm {
      * @return values of p function
      */
     private double p(int t) {
-        double result = 1/(double)t;
+        double result = Math.abs(Math.sin(t)/(double)t);
         return result;
     }
 }
