@@ -35,10 +35,10 @@ public class Main {
         Queens problem = new Queens();
         ResponseFormatter rf = ResponseFormatter.getInstance();
         agent.setProblem(problem);
-        agent.setSearchAlgorithm(new SimulatedAnealing());
-        rf.formatIndividualAlgorithms(agent , agent.solve());
-//        agent.setSearchAlgorithm(new SimpleHillclimbing());
+//        agent.setSearchAlgorithm(new SimulatedAnealing());
 //        rf.formatIndividualAlgorithms(agent , agent.solve());
+        agent.setSearchAlgorithm(new SimpleHillclimbing());
+        rf.formatIndividualAlgorithms(agent , agent.solve());
 //        agent.setSearchAlgorithm(new FirstChoiceHillclimbing());
 //        rf.formatIndividualAlgorithms(agent , agent.solve());
 //        agent.setSearchAlgorithm(new RandomHillclimbing());
