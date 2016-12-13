@@ -37,12 +37,12 @@ public class Main {
         agent.setProblem(problem);
 //        agent.setSearchAlgorithm(new SimulatedAnealing());
 //        rf.formatIndividualAlgorithms(agent , agent.solve());
-        agent.setSearchAlgorithm(new SimpleHillclimbing());
-        rf.formatIndividualAlgorithms(agent , agent.solve());
+//        agent.setSearchAlgorithm(new SimpleHillclimbing());
+//        rf.formatIndividualAlgorithms(agent , agent.solve());
 //        agent.setSearchAlgorithm(new FirstChoiceHillclimbing());
 //        rf.formatIndividualAlgorithms(agent , agent.solve());
-//        agent.setSearchAlgorithm(new RandomHillclimbing());
-//        rf.formatIndividualAlgorithms(agent , agent.solve());
+        agent.setSearchAlgorithm(new RandomHillclimbing());
+        rf.formatIndividualAlgorithms(agent , agent.solve());
 //        agent.setSearchAlgorithm(new RandomRestartHillclimbing());
 //        rf.formatIndividualAlgorithms(agent , agent.solve());
     }

@@ -15,14 +15,14 @@ public class Queens extends Problem {
         int[] state = new int[8];
 //        for (int i = 0; i < 8; i++)
 //            state[i] = i;
-        state[0] = 3;
-        state[1] = 7;
-        state[2] = 3;
-        state[3] = 4;
-        state[4] = 2;
-        state[5] = 0;
-        state[6] = 5;
-        state[7] = 1;
+        state[0] = 0;
+        state[1] = 1;
+        state[2] = 2;
+        state[3] = 3;
+        state[4] = 4;
+        state[5] = 5;
+        state[6] = 6;
+        state[7] = 7;
         QueensNode node = new QueensNode(state);
         return node;
     }
