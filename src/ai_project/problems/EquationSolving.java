@@ -20,7 +20,7 @@ public class EquationSolving extends Problem {
     public Node getRandomInitialState() {
         MathHandler math = MathHandler.getInstance();
         //generate random number between 0.2 to 3.14
-        int state = (math.getIntegerRandNum(294) + 20) / 100;
+        double state = (double) (math.getIntegerRandNum(294) + 20) / 100;
         return new EquationSolvingNode(state);
     }
 
@@ -51,17 +51,19 @@ public class EquationSolving extends Problem {
     @Override
     public Node crossover(Node parent1, Node parent2) {
         EquationSolvingNode offspring = new EquationSolvingNode((
-                (double) parent1.getState() + (double) parent2.getState()) / 2);
+                (double) parent1.getState() + (double) parent2.getState()) / (double)2);
         return offspring;
     }
 
     @Override
     public ArrayList<Node> mutation(ArrayList<Node> children) {
         MathHandler math = MathHandler.getInstance();
+        double gaussianValue ;
         for (int i = 0; i < children.size(); i++) {
             double x = (double) children.get(i).getState();
-            double gaussianValue = math.gaussianValue(x);
-            ((EquationSolvingNode) children.get(i)).setState(gaussianValue);
+            gaussianValue = math.gaussianValue(x);
+            if (gaussianValue > 0.2 && gaussianValue < 3.14)
+                ((EquationSolvingNode) children.get(i)).setState(gaussianValue);
         }
         return children;
     }

@@ -2,6 +2,7 @@ package ai_project.algorithms.population;
 
 import ai_project.Constants;
 import ai_project.MathHandler;
+import ai_project.ResponseFormatter;
 import ai_project.data_structures.Node;
 import ai_project.problems.Problem;
 
@@ -25,11 +26,17 @@ public class Genetic extends PopulationAlgorithm {
         population = generateInitialPopulation(problem);
         int stepLimit = Constants.GA_STEP_LIMITATION;
         while (stepLimit > 0 && !isGoal(population , problem)) {
+            for( Node node : population){
+                node.setFitness(problem.objectiveFunction(node));
+            }
             details.put(Constants.GA_STEP_LIMITATION - stepLimit, computeDetails(problem));
+            ResponseFormatter.getInstance().printOneDetail(Constants.GA_STEP_LIMITATION - stepLimit ,
+                    computeDetails(problem));
             ArrayList<Node> parents = selectParentsWithTournamentSelection(problem);
             ArrayList<Node> children = crossoverAndOffspring(parents, problem);
             children = mutation(children, problem);
             population = remainingSelection(children, problem);
+
             stepLimit--;
         }
         return bestNode(population, problem);
@@ -53,11 +60,11 @@ public class Genetic extends PopulationAlgorithm {
                 return -1;
         });
 
-        int sum = 0;
+        double sum = 0;
         double avg;
         for (int i = 0; i < population.size(); i++)
             sum += problem.objectiveFunction(population.get(i));
-        avg = sum / population.size();
+        avg = sum / (double)population.size();
         //result array that first member's is best fitness and last member's
         //is worth fitness and middle is average
         ArrayList<Double> result = new ArrayList<>();
@@ -95,7 +102,7 @@ public class Genetic extends PopulationAlgorithm {
         });
         for (int i = 0; i < K / 2; i++) {
             int x = math.getIntegerRandNum(population.size());
-            population.remove(population.size() - x);
+            population.remove(population.size()-1 - x);
         }
 
         return population;
@@ -111,6 +118,7 @@ public class Genetic extends PopulationAlgorithm {
             //problem object generates child from parents
             Node child = problem.crossover(parents.get(i), parents.get(i + 1));
             offspring.add(child);
+            child.setFitness(problem.objectiveFunction(child));
         }
         return offspring;
     }
@@ -132,11 +140,11 @@ public class Genetic extends PopulationAlgorithm {
         //sort temp result array based on fitness
         tempResult.sort((node, t1) -> {
             if (problem.objectiveFunction(node) > problem.objectiveFunction(t1))
-                return 1;
+                return -1;
             else if (problem.objectiveFunction(node) == problem.objectiveFunction(t1))
                 return 0;
             else
-                return -1;
+                return 1;
         });
         //select best PARENT_SELECTION_RATE number of temp result for final result
         ArrayList<Node> result = new ArrayList<>();

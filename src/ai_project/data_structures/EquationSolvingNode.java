@@ -16,7 +16,7 @@ public class EquationSolvingNode extends Node {
 
     @Override
     public boolean equals(Object o) {
-        if ((int) o == state)
+        if (((EquationSolvingNode)o).state == state)
             return true;
         else
             return false;

@@ -4,7 +4,6 @@ import ai_project.data_structures.Node;
 import ai_project.problems.Problem;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 /**
  * Created by mma on 12/8/16.
@@ -16,7 +15,7 @@ public class SimpleHillclimbing extends Hillclimbing {
         while (!problem.isGoal(currentNode)) {
             ArrayList<Node> nextStates = problem.nextState(currentNode);
             for( Node node : nextStates){
-                node.setAccessibilityCost((int) problem.objectiveFunction(node));
+                node.setFitness((int) problem.objectiveFunction(node));
             }
             Node next = getMaxNeighbor(nextStates , problem);
             setNumOfVisitedNode(getNumOfVisitedNode() + nextStates.size());

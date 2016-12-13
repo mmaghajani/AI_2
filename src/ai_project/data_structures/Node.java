@@ -4,7 +4,7 @@ package ai_project.data_structures;
  * Created by mma on 10/26/16.
  */
 public abstract class Node {
-    protected int accessibilityCost ;
+    protected double fitness;
     protected int depth = 0 ;
     protected Node parent = null ;
 
@@ -12,12 +12,12 @@ public abstract class Node {
 
     }
 
-    public int getAccessibilityCost() {
-        return accessibilityCost;
+    public double getFitness() {
+        return fitness;
     }
 
-    public void setAccessibilityCost(int accessibilityCost) {
-        this.accessibilityCost = accessibilityCost;
+    public void setFitness(double fitness) {
+        this.fitness = fitness;
     }
 
     public int getDepth() {

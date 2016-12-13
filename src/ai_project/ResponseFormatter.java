@@ -66,8 +66,18 @@ public class ResponseFormatter {
         for( int i = 0 ; i < details.size() ; i++ ){
             System.out.println("Generation " + i + " :");
             System.out.println("   The best fitness : " + details.get(i).get(0));
-            System.out.println("   The worth fitness : " + details.get(i).get(2));
-            System.out.println("   The average fitness : " + details.get(i).get(1));
+            System.out.println("   The worth fitness : " + details.get(i).get(1));
+            System.out.println("   The average fitness : " + details.get(i).get(2));
         }
+
+        System.out.println(separator);
+        System.out.println(goal);
+    }
+
+    public void printOneDetail(int i , ArrayList<Double> detail){
+        System.out.println("Generation " + i + " :");
+        System.out.println("   The best fitness : " + detail.get(0));
+        System.out.println("   The worth fitness : " + detail.get(1));
+        System.out.println("   The average fitness : " + detail.get(2));
     }
 }

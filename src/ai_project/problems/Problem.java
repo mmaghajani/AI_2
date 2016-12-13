@@ -28,6 +28,6 @@ public abstract class Problem {
 
     public double getPathCost(Node node){
         if(node == null )   return Double.MAX_VALUE ;
-        return node.getAccessibilityCost() ;
+        return node.getFitness() ;
     }
 }

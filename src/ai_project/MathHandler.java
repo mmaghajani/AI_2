@@ -39,7 +39,6 @@ public class MathHandler {
 
     /**
      * return value of gaussian function
-     *
      * @param x
      * @return
      */
@@ -48,7 +47,11 @@ public class MathHandler {
         double b = Constants.AVERAGE;
         double c = Math.sqrt(Constants.VARIANCE);
 
-        return a * Math.exp((-1 * (x - b) * (x - b)) / (2 * Math.sqrt(c) * Math.sqrt(c)));
+        double y = (-1 * (x - b) * (x - b)) ;
+        double z = (2 * c * c) ;
+        double f = y/z;
+        double r = (a * Math.exp(f));
+        return r;
     }
 
     /**
