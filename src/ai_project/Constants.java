@@ -38,7 +38,7 @@ public class Constants {
     /**
      * step limitation for Simulated Anealing
      */
-    public static final int STEP_LIMIT = 1000;
+    public static final int STEP_LIMIT = 10000000;
     /**
      * Restart limitation for Random Restart Hillclimbing
      */

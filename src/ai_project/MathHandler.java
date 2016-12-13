@@ -23,7 +23,7 @@ public class MathHandler {
      */
     public int getIntegerRandNum(int limit) {
         Random x = new Random();
-        return (x.nextInt() % limit);
+        return (Math.abs(x.nextInt() % limit));
     }
 
     /**
@@ -33,7 +33,8 @@ public class MathHandler {
      */
     public double getRandNum() {
         Random x = new Random();
-        return (x.nextInt() % 1000) / 1000;
+        double result = ((double)(Math.abs(x.nextInt() % 1000)) / 1000);
+        return result;
     }
 
     /**

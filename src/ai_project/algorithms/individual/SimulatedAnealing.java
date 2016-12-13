@@ -17,18 +17,18 @@ public class SimulatedAnealing extends IndividualAlgorithm {
     @Override
     public Node apply(Problem problem) {
         MathHandler math = MathHandler.getInstance() ;
-        int steps = 0;
+        int steps = 1;
         Node initial = problem.getInitialState();
         Node currentNode = initial ;
         while (steps < stepLimit && !problem.isGoal(currentNode)) {
             ArrayList<Node> nextStates = problem.nextState(currentNode);
             Node next = nextStates.get(math.getIntegerRandNum(nextStates.size()));
             increaseNumOfVisitedNode();
-            if( problem.objectiveFunction(currentNode) < problem.objectiveFunction(next)){
+            if( problem.objectiveFunction(currentNode) <= problem.objectiveFunction(next)){
                 next.setParent(currentNode);
                 currentNode = next ;
                 increaseNumOfExpandedNode();
-            }else if(math.getRandNum() > p(steps)) {
+            }else if(math.getRandNum() <= p(steps)) {
                 next.setParent(currentNode);
                 currentNode = next ;
                 increaseNumOfExpandedNode();
@@ -43,7 +43,8 @@ public class SimulatedAnealing extends IndividualAlgorithm {
      * @param t step of problem
      * @return values of p function
      */
-    private double p(double t) {
-        return 1 / t;
+    private double p(int t) {
+        double result = 1/(double)t;
+        return result;
     }
 }
