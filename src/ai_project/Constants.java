@@ -42,7 +42,7 @@ public class Constants {
     /**
      * Restart limitation for Random Restart Hillclimbing
      */
-    public static final int RESTART_LIMIT = 10;
+    public static final int RESTART_LIMIT = 100;
     /**
      * Precision for equation
      */

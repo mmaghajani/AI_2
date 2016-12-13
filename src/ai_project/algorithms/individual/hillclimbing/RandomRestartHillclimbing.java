@@ -13,9 +13,10 @@ public class RandomRestartHillclimbing extends Hillclimbing {
     @Override
     public Node apply(Problem problem) {
         int restartLimit = Constants.RESTART_LIMIT;
-        Node currentNode = problem.getInitialState();
         boolean flag;
+        Node currentNode = null ;
         while (restartLimit > 0) {
+            currentNode = problem.getRandomInitialState();
             while (!problem.isGoal(currentNode)) {
                 ArrayList<Node> nextStates = problem.nextState(currentNode);
                 flag = false;

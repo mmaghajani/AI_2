@@ -41,10 +41,10 @@ public class Main {
 //        rf.formatIndividualAlgorithms(agent , agent.solve());
 //        agent.setSearchAlgorithm(new FirstChoiceHillclimbing());
 //        rf.formatIndividualAlgorithms(agent , agent.solve());
-        agent.setSearchAlgorithm(new RandomHillclimbing());
-        rf.formatIndividualAlgorithms(agent , agent.solve());
-//        agent.setSearchAlgorithm(new RandomRestartHillclimbing());
+//        agent.setSearchAlgorithm(new RandomHillclimbing());
 //        rf.formatIndividualAlgorithms(agent , agent.solve());
+        agent.setSearchAlgorithm(new RandomRestartHillclimbing());
+        rf.formatIndividualAlgorithms(agent , agent.solve());
     }
 
     private static void getInputs() {
