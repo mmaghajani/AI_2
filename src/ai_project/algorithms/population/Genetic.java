@@ -91,7 +91,12 @@ public class Genetic extends PopulationAlgorithm {
             population.add(children.get(i));
         }
         //Deletes K/2 node from population based on fitness
-        population.sort((node, t1) -> {
+        ArrayList<Node> temp = new ArrayList<>();
+        for (int i = 0; i < K ; i++) {
+            int x = math.getIntegerRandNum(population.size());
+            temp.add(population.get(x));
+        }
+        temp.sort((node, t1) -> {
             if (problem.objectiveFunction(node) > problem.objectiveFunction(t1))
                 return 1;
             else if (problem.objectiveFunction(node) == problem.objectiveFunction(t1))
@@ -99,9 +104,8 @@ public class Genetic extends PopulationAlgorithm {
             else
                 return -1;
         });
-        for (int i = 0; i < K / 2; i++) {
-            int x = math.getIntegerRandNum(population.size());
-            population.remove(population.size() - 1 - x);
+        for( int i = 0 ; i < K/2 ; i++ ){
+            population.remove(temp.get(i));
         }
 
         return population;
