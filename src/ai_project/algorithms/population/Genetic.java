@@ -9,17 +9,47 @@ import ai_project.problems.Problem;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Scanner;
 
 /**
  * Created by mma on 12/8/16.
  */
 public class Genetic extends PopulationAlgorithm {
     ArrayList<Node> population = new ArrayList<>();
-    private int N = Constants.NUMBER_OF_POPULATION;
-    private int K = Constants.PARENT_SELECTION_RATE;
+    private int N;
+    private int K;
 
     public Genetic() {
         details = new HashMap<>();
+        getInputs();
+        N = Constants.NUMBER_OF_POPULATION;
+        K = Constants.PARENT_SELECTION_RATE;
+        name = "Genetic Algorithm";
+    }
+
+    /**
+     * This method get constants inputs
+     */
+    public void getInputs() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter inputs.For ignore each item press an negative number.");
+        System.out.println("Please Enter number of population.Default value(" +
+                Constants.NUMBER_OF_POPULATION + "):");
+        int x = sc.nextInt();
+        if (x > 0)
+            Constants.NUMBER_OF_POPULATION = x;
+        System.out.println("Please Enter parent selection rate.This is number of node " +
+                "for parent selection.Most not greater that number of population and must be even." +
+                "Default value(" + Constants.PARENT_SELECTION_RATE +
+                "):");
+        x = sc.nextInt();
+        if (x > 0 && x % 2 == 0 && x < Constants.NUMBER_OF_POPULATION)
+            Constants.PARENT_SELECTION_RATE = x;
+        System.out.println("Please Enter number of at most total fitness evaluation.Default value(" +
+                Constants.GA_STEP_LIMITATION + "):");
+        x = sc.nextInt();
+        if (x > 0)
+            Constants.GA_STEP_LIMITATION = x;
     }
 
     @Override
@@ -91,12 +121,12 @@ public class Genetic extends PopulationAlgorithm {
         }
         //Deletes K/2 node from population based on fitness
         ArrayList<Node> temp = new ArrayList<>();
-        for (int i = 0; i < K ; i++) {
+        for (int i = 0; i < K; i++) {
             int x = math.getIntegerRandNum(population.size());
             temp.add(population.get(x));
         }
         temp.sort(math.getComparator(problem));
-        for( int i = K-1 ; i >= K/2 ; i-- ){
+        for (int i = K - 1; i >= K / 2; i--) {
             population.remove(temp.get(i));
         }
 

@@ -10,6 +10,11 @@ import java.util.ArrayList;
  * Created by mma on 12/8/16.
  */
 public class RandomHillclimbing extends Hillclimbing {
+
+    public RandomHillclimbing() {
+        name = "Stochastic Hill Climbing";
+    }
+
     @Override
     public Node apply(Problem problem) {
         MathHandler math = MathHandler.getInstance();
@@ -18,7 +23,7 @@ public class RandomHillclimbing extends Hillclimbing {
         currentNode.setFitness((int) problem.objectiveFunction(currentNode));
         while (!problem.isGoal(currentNode)) {
             ArrayList<Node> nextStates = problem.nextState(currentNode);
-            for( Node node : nextStates){
+            for (Node node : nextStates) {
                 node.setFitness((int) problem.objectiveFunction(node));
             }
             setNumOfVisitedNode(getNumOfVisitedNode() + nextStates.size());

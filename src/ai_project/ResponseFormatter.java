@@ -34,7 +34,8 @@ public class ResponseFormatter {
     public void formatIndividualAlgorithms(ProblemSolvingAgent agent, Node goal) {
         Algorithm algorithm = agent.getSearchAlgorithm();
 
-
+        System.out.println(separator);
+        System.out.println("*** " + algorithm.getName() + " ***");
         Node node = goal;
         ArrayList<Node> path = new ArrayList<>();
         while (node != null) {
@@ -62,6 +63,7 @@ public class ResponseFormatter {
         HashMap<Integer , ArrayList<Double>> details = ((PopulationAlgorithm) algorithm).getDetails();
 
         System.out.println(separator);
+        System.out.println("*** " + algorithm.getName() + " ***");
         System.out.println("Number of total generation : " + details.size());
         for( int i = 0 ; i < details.size() ; i++ ){
             System.out.println("Generation " + i + " :");

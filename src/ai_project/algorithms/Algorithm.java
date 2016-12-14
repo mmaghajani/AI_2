@@ -13,13 +13,20 @@ public abstract class Algorithm {
 
     protected int maxUsedMemory = 0;
 
+    protected String name;
+
+    /**
+     * Apply this algorithm on the problem
+     * @param problem
+     * @return
+     */
     public abstract Node apply(Problem problem);
 
-    public void setMaxUsedMemory(int count) {
-        maxUsedMemory = count;
-    }
-
-    public int getMaxUsedMemory() {
-        return maxUsedMemory;
+    /**
+     * Getter for name of the algorithm
+     * @return
+     */
+    public String getName() {
+        return name;
     }
 }

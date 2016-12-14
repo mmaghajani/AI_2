@@ -19,8 +19,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         ProblemSolvingAgent agent = new ProblemSolvingAgent();
-//        getInputs();
-//        configQueensProblem(agent);
+        configQueensProblem(agent);
         configEquationSolvingProblem(agent);
     }
 
@@ -45,16 +44,5 @@ public class Main {
         rf.formatIndividualAlgorithms(agent , agent.solve());
         agent.setSearchAlgorithm(new RandomRestartHillclimbing());
         rf.formatIndividualAlgorithms(agent , agent.solve());
-    }
-
-    private static void getInputs() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter number of total evaluation for GA");
-        Constants.GA_STEP_LIMITATION = sc.nextInt() ;
-        System.out.println("Enter number of population");
-        Constants.NUMBER_OF_POPULATION = sc.nextInt();
-        System.out.println("Enter number of members as a parent");
-        Constants.PARENT_SELECTION_RATE = sc.nextInt();
-
     }
 }
