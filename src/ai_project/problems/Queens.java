@@ -15,14 +15,14 @@ public class Queens extends Problem {
         int[] state = new int[8];
 //        for (int i = 0; i < 8; i++)
 //            state[i] = i;
-        state[0] = 7 ;
-        state[1] = 3 ;
-        state[2] = 0 ;
-        state[3] = 2 ;
-        state[4] = 5 ;
-        state[5] = 1 ;
-        state[6] = 5 ;
-        state[7] = 0 ;
+        state[0] = 0;
+        state[1] = 1;
+        state[2] = 2;
+        state[3] = 3;
+        state[4] = 4;
+        state[5] = 5;
+        state[6] = 6;
+        state[7] = 7;
         QueensNode node = new QueensNode(state);
         return node;
     }
@@ -31,7 +31,7 @@ public class Queens extends Problem {
     public Node getRandomInitialState() {
         MathHandler math = MathHandler.getInstance();
         int[] state = new int[8];
-        for( int i = 0 ; i < 8 ; i++ )
+        for (int i = 0; i < 8; i++)
             state[i] = math.getIntegerRandNum(8);
 
         QueensNode node = new QueensNode(state);
@@ -99,11 +99,11 @@ public class Queens extends Problem {
         int breakPoint = math.getIntegerRandNum(8);
         int[] state = new int[8];
         //generate first child
-        for( int i = 0 ; i < 8 ; i++ ){
-            if( i < breakPoint )
-                state[i] = ((int[]) parent1.getState())[i] ;
+        for (int i = 0; i < 8; i++) {
+            if (i < breakPoint)
+                state[i] = ((int[]) parent1.getState())[i];
             else
-                state[i] = ((int[]) parent2.getState())[i] ;
+                state[i] = ((int[]) parent2.getState())[i];
         }
         QueensNode offspring = new QueensNode(state.clone());
         return offspring;
@@ -113,11 +113,11 @@ public class Queens extends Problem {
     public ArrayList<Node> mutation(ArrayList<Node> children) {
         ArrayList<Node> result = new ArrayList<>();
         MathHandler math = MathHandler.getInstance();
-        for( Node node : children){
+        for (Node node : children) {
             int x = math.getIntegerRandNum(8);
-            int[] state = ((int[])node.getState()) ;
-            state[x] = math.getIntegerRandNum(8) ;
-            ((QueensNode)node).setState(state);
+            int[] state = ((int[]) node.getState());
+            state[x] = math.getIntegerRandNum(8);
+            ((QueensNode) node).setState(state);
             result.add(node);
         }
         return result;
@@ -130,19 +130,52 @@ public class Queens extends Problem {
 
     @Override
     public double objectiveFunction(Node node) {
-        int counter = 0 ;
+        int counter = 0;
         int[] state = ((int[]) node.getState());
         int[] mark = new int[8];
         for (int i = 0; i < 8; i++)
             mark[i] = 0;
+
         for (int i = 0; i < 8; i++) {
             mark[state[i]] = 1;
         }
 
-        for( int i = 0 ; i < 8 ; i++ ){
-            if( mark[i] == 0 )
-                counter++ ;
+        for (int i = 0; i < 8; i++) {
+            if (mark[i] == 0)
+                counter++;
         }
-        return 8 - counter;
+
+        counter *= 2 ;
+
+        for (int i = 0; i < 8; i++) {
+            for (int j = 1; j < 8; j++) {
+                try {
+                    if (state[i] - j == state[i + j])
+                        counter++;
+                }catch(Exception e){
+
+                }
+                try {
+                    if (state[i] - j == state[i - j])
+                        counter++;
+                }catch(Exception e){
+
+                }
+                try {
+                    if (state[i] + j == state[i + j])
+                        counter++;
+                }catch(Exception e){
+
+                }
+                try {
+                    if (state[i] + j == state[i - j])
+                        counter++;
+                }catch(Exception e){
+
+                }
+            }
+        }
+
+        return -(counter/2) ;
     }
 }

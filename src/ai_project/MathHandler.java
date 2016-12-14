@@ -1,5 +1,9 @@
 package ai_project;
 
+import ai_project.data_structures.Node;
+import ai_project.problems.Problem;
+
+import java.util.Comparator;
 import java.util.Random;
 
 /**
@@ -23,7 +27,7 @@ public class MathHandler {
      */
     public int getIntegerRandNum(int limit) {
         Random x = new Random();
-        return (x.nextInt() % limit);
+        return (Math.abs(x.nextInt() % limit));
     }
 
     /**
@@ -33,12 +37,12 @@ public class MathHandler {
      */
     public double getRandNum() {
         Random x = new Random();
-        return (x.nextInt() % 1000) / 1000;
+        double result = ((double)(Math.abs(x.nextInt() % 1000)) / 1000);
+        return result;
     }
 
     /**
      * return value of gaussian function
-     *
      * @param x
      * @return
      */
@@ -47,7 +51,11 @@ public class MathHandler {
         double b = Constants.AVERAGE;
         double c = Math.sqrt(Constants.VARIANCE);
 
-        return a * Math.exp((-1 * (x - b) * (x - b)) / (2 * Math.sqrt(c) * Math.sqrt(c)));
+        double y = (-1 * (x - b) * (x - b)) ;
+        double z = (2 * c * c) ;
+        double f = y/z;
+        double r = (a * Math.exp(f));
+        return r;
     }
 
     /**
@@ -57,5 +65,21 @@ public class MathHandler {
      */
     public double gradian(double state) {
         return Math.cos(state) - 2 * state + 1;
+    }
+
+    /**
+     * Return a comparator for sort descending
+     * @param problem
+     * @return
+     */
+    public Comparator<Node> getComparator(Problem problem){
+        return (node, t1) -> {
+            if (problem.objectiveFunction(node) > problem.objectiveFunction(t1))
+                return -1;
+            else if (problem.objectiveFunction(node) == problem.objectiveFunction(t1))
+                return 0;
+            else
+                return 1;
+        };
     }
 }

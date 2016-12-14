@@ -12,24 +12,35 @@ public class SimpleHillclimbing extends Hillclimbing {
     @Override
     public Node apply(Problem problem) {
         Node currentNode = problem.getInitialState();
-        boolean flag = false;
         while (!problem.isGoal(currentNode)) {
             ArrayList<Node> nextStates = problem.nextState(currentNode);
-            flag = false;
-            for (Node nextState : nextStates) {
-                increaseNumOfVisitedNode();
-                if (problem.objectiveFunction(currentNode) < problem.objectiveFunction(nextState)) {
-                    increaseNumOfExpandedNode();
-                    nextState.setParent(currentNode);
-                    currentNode = nextState;
-                    flag = true;
-                }
+            for( Node node : nextStates){
+                node.setFitness((int) problem.objectiveFunction(node));
             }
-            //local maximum
-            if (flag == false)
+            Node next = getMaxNeighbor(nextStates , problem);
+            setNumOfVisitedNode(getNumOfVisitedNode() + nextStates.size());
+            if( problem.objectiveFunction(currentNode) >= problem.objectiveFunction(next))
                 return currentNode;
+            else{
+                next.setParent(currentNode);
+                currentNode = next;
+                increaseNumOfExpandedNode();
+            }
         }
 
         return currentNode;
+    }
+
+    private Node getMaxNeighbor(ArrayList<Node> nextStates , Problem problem) {
+        nextStates.sort((node, t1) -> {
+            if( problem.objectiveFunction(node) > problem.objectiveFunction(t1))
+                return 1 ;
+            else if( problem.objectiveFunction(node) > problem.objectiveFunction(t1))
+                return 0 ;
+            else
+                return -1;
+        });
+
+        return nextStates.get(nextStates.size()-1);
     }
 }

@@ -15,10 +15,14 @@ public class RandomHillclimbing extends Hillclimbing {
         MathHandler math = MathHandler.getInstance();
         //get initial state
         Node currentNode = problem.getInitialState();
+        currentNode.setFitness((int) problem.objectiveFunction(currentNode));
         while (!problem.isGoal(currentNode)) {
             ArrayList<Node> nextStates = problem.nextState(currentNode);
-            nextStates = deriveIncrementedNextStates(nextStates, currentNode, problem);
+            for( Node node : nextStates){
+                node.setFitness((int) problem.objectiveFunction(node));
+            }
             setNumOfVisitedNode(getNumOfVisitedNode() + nextStates.size());
+            nextStates = deriveIncrementedNextStates(nextStates, currentNode, problem);
             if (nextStates.size() == 0) {
                 //local maximum
                 return currentNode;
