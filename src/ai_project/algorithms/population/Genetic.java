@@ -7,6 +7,7 @@ import ai_project.data_structures.Node;
 import ai_project.problems.Problem;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 
 /**
@@ -34,8 +35,6 @@ public class Genetic extends PopulationAlgorithm {
             children = mutation(children, problem);
             population = remainingSelection(children, problem);
             details.put(Constants.GA_STEP_LIMITATION - stepLimit, computeDetails(problem));
-            ResponseFormatter.getInstance().printOneDetail(Constants.GA_STEP_LIMITATION - stepLimit,
-                    computeDetails(problem));
             stepLimit--;
         }
         return bestNode(population, problem);
@@ -96,15 +95,8 @@ public class Genetic extends PopulationAlgorithm {
             int x = math.getIntegerRandNum(population.size());
             temp.add(population.get(x));
         }
-        temp.sort((node, t1) -> {
-            if (problem.objectiveFunction(node) > problem.objectiveFunction(t1))
-                return 1;
-            else if (problem.objectiveFunction(node) == problem.objectiveFunction(t1))
-                return 0;
-            else
-                return -1;
-        });
-        for( int i = 0 ; i < K/2 ; i++ ){
+        temp.sort(math.getComparator(problem));
+        for( int i = K-1 ; i >= K/2 ; i-- ){
             population.remove(temp.get(i));
         }
 
@@ -140,14 +132,7 @@ public class Genetic extends PopulationAlgorithm {
             temp.remove(node);
         }
         //sort temp result array based on fitness
-        tempResult.sort((node, t1) -> {
-            if (problem.objectiveFunction(node) > problem.objectiveFunction(t1))
-                return -1;
-            else if (problem.objectiveFunction(node) == problem.objectiveFunction(t1))
-                return 0;
-            else
-                return 1;
-        });
+        tempResult.sort(math.getComparator(problem));
         //select best PARENT_SELECTION_RATE number of temp result for final result
         ArrayList<Node> result = new ArrayList<>();
         for (int i = 0; i < K; i++)

@@ -1,5 +1,9 @@
 package ai_project;
 
+import ai_project.data_structures.Node;
+import ai_project.problems.Problem;
+
+import java.util.Comparator;
 import java.util.Random;
 
 /**
@@ -61,5 +65,21 @@ public class MathHandler {
      */
     public double gradian(double state) {
         return Math.cos(state) - 2 * state + 1;
+    }
+
+    /**
+     * Return a comparator for sort descending
+     * @param problem
+     * @return
+     */
+    public Comparator<Node> getComparator(Problem problem){
+        return (node, t1) -> {
+            if (problem.objectiveFunction(node) > problem.objectiveFunction(t1))
+                return -1;
+            else if (problem.objectiveFunction(node) == problem.objectiveFunction(t1))
+                return 0;
+            else
+                return 1;
+        };
     }
 }

@@ -11,12 +11,12 @@ public class Constants {
     /**
      * Variance property for Gaussian function
      */
-    public static final double VARIANCE = 0.2;
+    public static final double VARIANCE = 0.01;
     /**
      * Step limitation for GA.The number of total fitness evaluation.
      * Can be overridden by user in input state
      */
-    public static int GA_STEP_LIMITATION = 1000;
+    public static int GA_STEP_LIMITATION = 10;
     /**
      * Number of population in GA.
      * Can be overridden by user in input state
@@ -46,5 +46,5 @@ public class Constants {
     /**
      * Precision for equation
      */
-    public static final double PRECISION_SOLVING_EQUATION = 0.01 ;
+    public static final double PRECISION_SOLVING_EQUATION = 0.005 ;
 }
